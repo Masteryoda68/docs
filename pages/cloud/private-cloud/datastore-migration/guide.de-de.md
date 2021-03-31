@@ -53,7 +53,7 @@ Geben Sie die Variablen ein:
 
 > [!warning]
 >
-> Das Ziel-Dedicated Cloud muss sich in einem anderen Bereich als sbg1a befinden.
+> Das Ziel-PCC muss sich in einem der folgenden Bereiche befinden: RBX (Roubaix), LIM (Frankfurt) oder ERI (London).
 >
 
 Sobald Sie die FilerId identifiziert haben, verwenden Sie folgenden Aufruf, um den Datastore auf das Ziel-PCC zu kopieren:
@@ -70,7 +70,22 @@ Geben Sie die Variablen ein:
 
 Die Replikation der Daten kann mehrere Stunden dauern. Sobald die Kopie abgeschlossen ist, erhalten Sie eine E-Mail, in der der Erfolg der Kopie bestätigt wird.
 
-### Schritt 3: Zugriff auf die Kopie über vSphere
+### Schritt 3: den Stand der Kopie
+
+Um auf den Status der Kopie der Datastores zuzugreifen, rufen Sie folgenden Aufruf an:
+
+> [!api]
+>
+> @api {GET} /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/copyFilerStatus
+
+Geben Sie die Variablen ein:
+
+- serviceName: Name der Ziel-KPC (z. B.: pcc-192-0-2-50).
+- datacenterId: die ID des Zielrechenzentrums (z. B.: 1515).
+
+Wenn Sie eine Kopie angefordert haben, wird Ihnen die API alle Kopiervorgänge zurückgeben, die noch nicht abgeschlossen sind (prozentualer Fortschritt, Größe der übermittelten Daten, Task-Status usw.).
+
+### Schritt 4: Zugriff auf die Kopie über vSphere
 
 Gehen Sie [in Ihrem vSphere](../den_vsphere_client_installieren/) Interface in die Ansicht `Storage`{.action}.
 

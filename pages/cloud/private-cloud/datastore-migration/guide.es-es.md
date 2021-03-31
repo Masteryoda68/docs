@@ -53,7 +53,7 @@ Introduzca las variables:
 
 > [!warning]
 >
-> El Private Cloud de destino debe estar situado en una zona diferente de sbg1a.
+> El PCC de destino debe estar situado en una de las siguientes zonas: RBX (Roubaix), LIM (Frankfurt) o ERI (Londres).
 >
 
 Una vez que haya identificado el filerId, utilice la siguiente llamada para copiar el datastore al Private Cloud de destino:
@@ -70,7 +70,22 @@ Introduzca las variables:
 
 La replicación de los datos puede tardar varias horas. Una vez completada, recibirá un mensaje de correo electrónico confirmando la correcta copia de la copia.
 
-### 3. acceder a la copia desde vSphere
+### 3. conocer el progreso de la copia
+
+Para consultar el progreso de la copia de los datastores, realice la siguiente llamada:
+
+> [!api]
+>
+> @api {GET} /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/copyFilerStatus
+
+Introduzca las variables:
+
+- serviceName: el nombre del PCC de destino (p. ej.: pcc-192-0-2-50).
+- datacenterId: ID del datacenter de destino (p. ej.: 1515).
+
+Si se ha solicitado una copia, la API le devolverá todas las operaciones de copia, pendientes, en curso o terminadas (porcentaje de progresión, tamaño de los datos transferidos, estado de la tarea, etc.).
+
+### 4. acceder a la copia desde vSphere
 
 En su [interfaz vSphere](../instalar_el_vsphere_client/), sitúese en la vista `Almacenamiento`{.action}.
 

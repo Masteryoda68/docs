@@ -53,7 +53,7 @@ Inserisci le variabili:
 
 > [!warning]
 >
-> Il PCC di destinazione deve essere situato in una zona diversa da sbg1a.
+> Il PCC di destinazione deve essere situato in una delle seguenti zone: RBX (Roubaix), LIM (Francoforte) o ERI (Londra).
 >
 
 Una volta identificato il filerId, utilizza questa chiamata per copiare il datastore sul PCC di destinazione:
@@ -70,7 +70,22 @@ Inserisci le variabili:
 
 La replica dei dati può richiedere diverse ore. Una volta completata l'operazione, riceverai un'email di conferma del completamento dell'operazione.
 
-### Step 3: accedere alla copia da vSphere
+### Step 3: conoscere lo stato di avanzamento della copia
+
+Per accedere allo stato di avanzamento della copia dei datastore, effettua questa chiamata:
+
+> [!api]
+>
+> @api {GET} /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/copyFilerStatus
+
+Inserisci le variabili:
+
+- serviceName: il nome del PCC di destinazione (ad esempio: pcc-192-0-2-50).
+- datacenterId: l'ID del datacenter di destinazione (ad esempio: 1515).
+
+Se hai richiesto una copia, l'API ti restituirà tutte le operazioni di copia in attesa, in corso o terminate (percentuale di progressione, dimensione dei dati trasferiti, stato dell'operazione, ecc...).
+
+### Step 4: accedere alla copia da vSphere
 
 Nella tua [interfaccia vSphere](../connessione-interfaccia-vsphere/), posizionati nella vista `Storage`{.action}.
 
