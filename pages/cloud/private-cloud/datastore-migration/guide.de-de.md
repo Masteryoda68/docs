@@ -1,7 +1,7 @@
 ---
-title: Datastore zwischen zwei Dedicated Cloud kopieren
+title: Datastore zwischen zwei PCCs kopieren
 slug: datastore-copy
-excerpt: Hier erfahren Sie, wie Sie über die OVHcloud APIs von einem anderen Dedicated Cloud aus auf die Kopie eines Datastores eines Dedicated Cloud zugreifen.
+excerpt: Erfahren Sie hier, wie Sie über die OVHcloud API von einem PCC Dienst aus auf eine Datastore-Kopie eines nicht verfügbaren Dienstes zugreifen
 section: OVHcloud Funktionen
 hidden: true
 ---
@@ -10,44 +10,44 @@ hidden: true
 > Diese Übersetzung wurde durch unseren Partner SYSTRAN automatisch erstellt. In manchen Fällen können ungenaue Formulierungen verwendet worden sein, z.B. bei der Beschriftung von Schaltflächen oder technischen Details. Bitte ziehen Sie beim geringsten Zweifel die englische oder französische Fassung der Anleitung zu Rate. Möchten Sie mithelfen, diese Übersetzung zu verbessern? Dann nutzen Sie dazu bitte den Button «Mitmachen» auf dieser Seite.
 >
 
-**Stand 29.03.2021**
+**Letzte Aktualisierung am 29.03.2021**
 
 ## Ziel
 
-Im Anschluss an die Störung im Datacenter SBG können Sie die Datastores eines von der Störung betroffenen Dedicated Cloud auf ein Ziel-PCC migrieren.
+Im Rahmen der Störung im Rechenzentrum SBG können Sie die Datastores eines betroffenen PCC Dienstes auf einen neuen PCC Dienst migrieren.
 
-**Hier erfahren Sie, wie Sie über die OVHcloud APIs einen Datastore eines Dedicated Cloud von einem anderen Dedicated Cloud aus kopieren.**
+**Diese Anleitung erklärt, wie Sie über die OVHcloud API Datastores kopieren können.**
 
 ## Voraussetzungen
 
-- Sie sind mit den [OVHcloud APIs verbunden](https://api.ovh.com/)
-- Sie sind in Ihrem [vSphere Interface](../den_vsphere_client_installieren/) angemeldet.
+- Sie können sich in der [OVHcloud API-Konsole](https://api.ovh.com/) einloggen.
+- Sie haben Zugriff auf das [vSphere Interface](../den_vsphere_client_installieren/).
 
 > [!warning]
 >
-> Wenn Ihre Quell-PCC über ein [HDS](https://www.ovhcloud.com/de/enterprise/certification-conformity/hds/) oder [PCI-DSS](https://www.ovhcloud.com/de/enterprise/certification-conformity/pci-dss/) Zertifikat verfügt, muss Ihre Ziel-PCC über das gleiche aktive **Zertifikat verfügen,** um den Datastore abzurufen.
+> Wenn Ihre Quell-PCC über ein [HDS](https://www.ovhcloud.com/de/enterprise/certification-conformity/hds/) oder [PCI-DSS](https://www.ovhcloud.com/de/enterprise/certification-conformity/pci-dss/) Zertifikat verfügt, muss Ihr Ziel-PCC über das gleiche aktive **Zertifikat verfügen,** um den Datastore abzurufen.
 >
 > Weitere Informationen finden Sie in unserer [Anleitung Aktivierung der Compliance Funktion Healthcare (HDS) oder Payment Services (PCI DSS)](../pci-dss-option-aktivieren/).
 >
 
 ## In der praktischen Anwendung
 
-Wenn Sie sich nicht an die Funktionsweise der OVHcloud APIs gewöhnt haben, lesen Sie unsere Anleitung [Erste Schritte mit den OVHcloud APIs](https://docs.ovh.com/gb/en/api/first-steps-with-ovh-api/).
+Wenn Sie nicht mit der OVHcloud API vertraut sind, lesen Sie zunächst unsere Anleitung zur [OVHcloud API](https://docs.ovh.com/gb/en/api/first-steps-with-ovh-api/).
 
 ### Schritt 1: Die FilerID des Datastores abrufen
 
-Sie müssen zuerst die zu kopierende FilerId ins Visier nehmen.
+Sie müssen zuerst die zu kopierende `filerId` abrufen.
 
-Loggen Sie sich auf [https://api.ovh.com/](https://api.ovh.com/) ein und verwenden Sie folgenden Anruf:
+Loggen Sie sich auf [https://api.ovh.com/](https://api.ovh.com/) ein und verwenden Sie folgenden Aufruf:
 
 > [!api]
 >
 > @api {GET} /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/filer
 
-Geben Sie die Variablen ein:
+Geben Sie diese Variablen ein:
 
-- serviceName: Name der ursprünglichen Dedicated Cloud in SBG (z. B.: pcc-192-0-2-15).
-- datacenterId: die ID des Quellrechenzentrums (z. B.: 1337).
+- serviceName: Name des Quell-PCC in SBG (z.B. pcc-192-0-2-15).
+- datacenterId: die ID des Quell-Rechenzentrums (z. B. 1337).
 
 ### Schritt 2: Datastore-Kopie starten
 
@@ -56,7 +56,7 @@ Geben Sie die Variablen ein:
 > Das Ziel-PCC muss sich in einem der folgenden Bereiche befinden: RBX (Roubaix), LIM (Frankfurt) oder ERI (London).
 >
 
-Sobald Sie die FilerId identifiziert haben, verwenden Sie folgenden Aufruf, um den Datastore auf das Ziel-PCC zu kopieren:
+Sobald Sie die FilerId identifiziert haben, verwenden Sie folgenden Aufruf, um den Datastore auf den Ziel-PCC zu kopieren:
 
 > [!api]
 >
@@ -64,41 +64,41 @@ Sobald Sie die FilerId identifiziert haben, verwenden Sie folgenden Aufruf, um d
 
 Geben Sie die Variablen ein:
 
-- serviceName: Name der Ziel-KPC (z. B.: pcc-192-0-2-50).
-- datacenterId: die ID des Zielrechenzentrums (z. B.: 1515).
-- filerId: die im vorherigen Schritt abgerufene FilerId (z. B.: 001234).
+- serviceName: Name des Ziel-PCC (z.B. pcc-192-0-2-50).
+- datacenterId: die ID des Ziel-Rechenzentrums (z.B.: 1515).
+- filerId: die im vorherigen Schritt abgerufene FilerId (z.B.: 001234).
 
-Die Replikation der Daten kann mehrere Stunden dauern. Sobald die Kopie abgeschlossen ist, erhalten Sie eine E-Mail, in der der Erfolg der Kopie bestätigt wird.
+Die Replikation der Daten kann mehrere Stunden dauern. Sobald die Kopie abgeschlossen ist, erhalten Sie eine E-Mail, in der der Erfolg des Kopiervorgangs bestätigt wird.
 
-### Schritt 3: den Stand der Kopie
+### Schritt 3: Status der Kopie abrufen
 
-Um auf den Status der Kopie der Datastores zuzugreifen, rufen Sie folgenden Aufruf an:
+Um auf den Status der Kopie der Datastores zuzugreifen, nutzen Sie folgenden Call:
 
 > [!api]
 >
 > @api {GET} /dedicatedCloud/{serviceName}/datacenter/{datacenterId}/copyFilerStatus
 
-Geben Sie die Variablen ein:
+Geben Sie diese Variablen ein:
 
-- serviceName: Name der Ziel-KPC (z. B.: pcc-192-0-2-50).
-- datacenterId: die ID des Zielrechenzentrums (z. B.: 1515).
+- serviceName: Name des Ziel-PCC (z.B. pcc-192-0-2-50).
+- datacenterId: die ID des Ziel-Rechenzentrums (z.B.: 1515).
 
 Wenn Sie eine Kopie angefordert haben, wird Ihnen die API alle Kopiervorgänge zurückgeben, die noch nicht abgeschlossen sind (prozentualer Fortschritt, Größe der übermittelten Daten, Task-Status usw.).
 
 ### Schritt 4: Zugriff auf die Kopie über vSphere
 
-Gehen Sie [in Ihrem vSphere](../den_vsphere_client_installieren/) Interface in die Ansicht `Storage`{.action}.
+Gehen Sie in Ihrem [vSphere Interface](../den_vsphere_client_installieren/) in die Ansicht `Storage`{.action}.
 
 ![ds_restore](images/ds-restore.png){.thumbnail}
 
-Die Kopie wird über einen Datastore auf allen Hosts des Zieldatacenters unter dem Namen `restore-XXXXXX` (XXXXXX bezeichnet die Nummer des Quelldatastores) angezeigt.
+Die Replikation wird auf allen Hosts des Ziel-Rechenzentrums unter dem Namen `restore-XXXXXX` angezeigt (XXXXXX steht für die Nummer des Quell-Datastores).
 
 > [!warning]
 >
-> Der wiedergewonnene Datastore ist nur leserlich.
+> Der wiederhergestellte Datastore ist read-only.
 >
 
-Bei virtuellen Maschinen müssen diese [in der vSphereInventur gespeichert werden](../vsphere-register-vm-vmx/) und anschließend [zu einem](../eine-vm-klonen/) der Datastores geklont werden, bevor sie gestartet werden können.
+Virtuelle Maschinen müssen im [vSphere Inventar](../vsphere-register-vm-vmx/) gespeichert werden und dann in einen [Datastore geklont](../eine-vm-klonen/)  werden. Anschließend können sie gestartet werden.
 
 ## Weiterführende Informationen
 
