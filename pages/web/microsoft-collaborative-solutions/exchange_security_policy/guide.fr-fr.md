@@ -100,7 +100,7 @@ Pour cela, cochez les cases souhaitées dans le tableau ci-dessous :
 
 Une fois votre choix effectué, validez ces changements en cliquant sur `Enregistrer les modifications`{.action}.
 
-### Que faire lorsque je ne parviens pas à me connecter à l'un de mes comptes e-mail ?
+### Que faire lorsque je ne parviens pas à me connecter à l'un de mes comptes e-mail ? <a name="blockedaccount"></a>
 
 Vérifiez si vous avez reçu un e-mail sur l'adresse e-mail de référence de votre compte OVHCcloud, il concerne le blocage du compte e-mail. En effet cela indique que le seuil de tentatives infructeuses a été atteint. L'e-mail a pour objet:
 
