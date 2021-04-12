@@ -44,7 +44,7 @@ Poursuivez ensuite vers le ou les aspects que vous souhaitez modifier.
 |[Renforcer la vérification des messages entrants (Exchange uniquement)](./#renforcer-la-verification-des-messages-entrants-exchange-uniquement){.external}|Indiquez si nos serveurs doivent vérifier si les messages reçus proviennent d'une source légitime (vérifications DKIM et/ou SPF).|
 |[Définir l'affichage des messages indésirables (Exchange uniquement)](./#definir-laffichage-des-messages-indesirables-exchange-uniquement){.external}|Précisez si les messages indésirables doivent comporter un tag permettant de les identifier ou de les déplacer automatiquement vers la corbeille.|
 
-### Renforcer la sécurité à la connexion
+### Renforcer la sécurité à la connexion <a name="loginsecurity"></a>
 
 Ceci vous permet de définir si les comptes e-mail doivent se verrouiller après un certain nombre de tentatives de connexion infructueuses.
 
@@ -99,6 +99,14 @@ Pour cela, cochez les cases souhaitées dans le tableau ci-dessous :
 |Déplacer les messages indésirables dans la corbeille|Définissez si nos serveurs doivent automatiquement déplacer les messages reçus dits « indésirables » dans la corbeille.|
 
 Une fois votre choix effectué, validez ces changements en cliquant sur `Enregistrer les modifications`{.action}.
+
+### Que faire lorsque je ne parviens pas à me connecter à l'un de mes comptes e-mail ?
+
+Vérifiez si vous avez reçu un e-mail sur l'adresse e-mail de référence de votre compte OVHCcloud, il concerne le blocage du compte e-mail. En effet cela indique que le seuil de tentatives infructeuses a été atteint. L'e-mail a pour objet:
+
+**[OVHcloud] votre adresse yourname@mydomain.ovh a été temporairement bloquée**
+
+Par défaut, le blocage est de 30 minutes après 10 tentatives érronées. ce paramètre peut être paramétré. Consultez la rubrique [Renforcer la sécurité à la connexion](#loginsecurity) de ce guide.
 
 ## Aller plus loin
 
