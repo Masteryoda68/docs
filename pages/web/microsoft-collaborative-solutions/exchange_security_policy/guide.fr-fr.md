@@ -102,7 +102,7 @@ Une fois votre choix effectué, validez ces changements en cliquant sur `Enregis
 
 ### Que faire lorsque je ne parviens pas à me connecter à l'un de mes comptes e-mail ? <a name="blockedaccount"></a>
 
-Vérifiez si vous avez reçu un e-mail sur l'adresse e-mail de référence de votre compte OVHCcloud. Ce message concerne le blocage du compte e-mail et indique que le nombre maximal de tentatives infructeuses a été atteint. L'e-mail a pour objet:
+Vérifiez si vous avez reçu un e-mail sur l'adresse e-mail de référence de votre compte OVHcloud. Ce message concerne le blocage du compte e-mail et indique que le nombre maximal de tentatives infructeuses a été atteint. L'e-mail a pour objet:
 
 **[OVHcloud] votre adresse *yourname@mydomain.ovh* a été temporairement bloquée**
 
