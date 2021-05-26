@@ -104,9 +104,9 @@ Confirmez enfin le mot de passe de l'adresse e-mail source (celle que vous voule
 
 > [!warning]
 >
-> Avant de commencer votre migration, si vous venez de commander votre nouvelle offre e-mail, ajoutez d'abord le nom de domaine à votre plateforme e-mail. (exemple: Pour migrer le compte « myemail@mydomain.ovh » vous devez ajouter le nom de domaine « mydomaine.ovh » à votre plateforme)
+> Si vous venez de commander votre nouvelle offre e-mail, ajoutez d'abord le nom de domaine à votre plateforme e-mail, avant de commencer votre migration. <br>Par exemple, pour migrer le compte « myemail@mydomain.ovh », vous devez ajouter le nom de domaine « mydomaine.ovh » à votre plateforme)
 >
->Dirigez-vous dans l'onglet `Domaines associés`{.action} sur votre plateforme, puis `Ajouter un domaine`{.action}. Un fois le nom de domaine ajouté, assurez-vous de bien avoir la mention `ok` devant le nom de domaine.
+>Sélectionnez l’onglet `Domaines associés`{.action} sur votre plateforme, puis cliquez sur `Ajouter un domaine`{.action}. Une fois le nom de domaine ajouté, assurez-vous que la mention `OK` est bien présente dans la colonne `Status`.
 >
 >![exchange](images/account_migration_adddomain.png){.thumbnail}
 >
