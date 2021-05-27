@@ -31,7 +31,7 @@ Die Grundschritte sind unabhängig von dem darunterliegenden System immer gleich
 
 - Erstellung einer virtuellen MAC-Adresse für eine Failover IP
 - Ändern der MAC-Adresse der virtuellen Maschine (VM) auf diese neue Adresse
-- Konfuguration von **IP-Adresse**, **Netzmaske**, **Gateway** und **Route zum Gateway** innerhalb der VM
+- Konfiguration von **IP-Adresse**, **Netzmaske**, **Gateway** und **Route zum Gateway** innerhalb der VM
 
 Die Codebeispiele in den folgenden Anweisungen sind durch Ihre eigenen Werte zu ersetzen:
 
